@@ -18,3 +18,8 @@ database.yml
 */public/bundles/
 */var/
 */vendor/
+
+## C#
+appsettings.*.json
+*/obj/*
+*/bin/*
