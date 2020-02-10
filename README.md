@@ -2,15 +2,16 @@
 
 This is just a collection of tests for myself to see how frameworks I know compare for performance, at least in the way that I know how to build them. If you have suggestions on how performance could be improved in a realistic way, feel free to submit a PR. Though we may differ on what is considered "realistic"
 
-## Results from benchmarker
+## Updated Results
 
-Language | Framework | ORM | Result
---- | --- | --- | ---
-C# | ASP.NET Core MVC | Entity Framework | 23.23s
-PHP | Symfony | Doctrine | 70.89s
-JavaScript | Express | Sequelize | 31.28s
-Ruby | Rails | ActiveRecord | 78.85s
-Ruby | Sinatra | Sequel | 68.87s
+```
+                    user     system      total        real
+ASP.NET Core MVC    1.139721   0.675669   1.815390 ( 15.862574)
+Sinatra             0.833938   0.740033   1.573971 ( 23.041624)
+Express             0.908309   0.661417   1.569726 ( 35.781817)
+Symfony             1.035906   0.585410   1.621316 ( 42.420679)
+Rails               1.006100   0.606241   1.612341 ( 81.408431)
+```
 
 ## To run
 
