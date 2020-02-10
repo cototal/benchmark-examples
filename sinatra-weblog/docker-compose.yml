@@ -1,0 +1,15 @@
+version: "3"
+services:
+  web:
+    build: .
+    container_name: sinatra_weblog
+    volumes:
+      - .:/myapp
+    ports:
+      - "6000:6000"
+    command: ["tail", "-f", "/dev/null"]
+    working_dir: /myapp
+networks:
+  default:
+    external:
+      name: services

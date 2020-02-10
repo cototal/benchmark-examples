@@ -1,3 +1,5 @@
+*.csv
+
 ## Rails
 # Ignore all logfiles and tempfiles.
 */log/*
@@ -23,3 +25,9 @@ database.yml
 appsettings.*.json
 */obj/*
 */bin/*
+
+## Node
+*/node_modules/*
+
+## Sinatra
+*/.env*
