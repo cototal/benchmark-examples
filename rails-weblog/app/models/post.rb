@@ -8,7 +8,7 @@ class Post < ApplicationRecord
       return
     end
     Author.find_each do |author|
-      100.times do
+      50.times do
         author.posts.create!(title: Faker::Lorem.sentence, body: Faker::Lorem.paragraphs(number: 3).join("\n"))
       end
     end

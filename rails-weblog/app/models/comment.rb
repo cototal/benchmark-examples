@@ -7,7 +7,7 @@ class Comment < ApplicationRecord
       return
     end
     Post.find_each do |post|
-      20.times do
+      10.times do
         post.comments.create!(title: Faker::Lorem.sentence, body: Faker::Lorem.paragraphs(number: 2).join("\n"))
       end
     end

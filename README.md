@@ -20,7 +20,11 @@ Use the `benchmarker` app to run against the host you have the web app running o
 
 ## Notes
 
-* I was actually expecting Sinatra and Sequel to do a lot better. I must be missing something, but it was harder to work with associations in Sequel than I thought it would be.
+* I was actually expecting Sinatra and Sequel to do a lot better. I must be missing something, but it was harder to work with associations in Sequel than I thought it would be. (Update: Yes, I am doing something wrong.)
 * Sequelize did surprisingly well. I was able to learn a bit more about its available options from VS Code IntelliSense than from the documentation. I should learn more about it.
 * I'm disappointed PHP didn't do better. I should try it on a Linux VM and see if it does better.
-* It isn't really surprising, but Entity Framework was probably the most difficult to configure to work with an existing database. My attempts to use standard property names and configration/annotations to map the correct field failed. I also found VS Code to be less convenient for C# development tooling than the full Visual Studio IDE.
+* It isn't really surprising, but Entity Framework was probably the most difficult to configure to work with an existing database. My attempts to use standard property names and configration/annotations to map the correct field failed. I also found VS Code to be less convenient for C# development tooling than the full Visual Studio IDE. I always forget the connection string format:
+
+    ```
+    "DefaultConnection": "server=mysql;port=3306;database=weblog_dev;uid=root;password=secret;sslmode=None"
+    ```

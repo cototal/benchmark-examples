@@ -1,10 +1,11 @@
 require "sequel"
 require "sinatra"
+require "sinatra/json"
 require "json"
 require "logger"
 
 connection = File.read(".env").strip
-DB = Sequel.connect(connection, loggers: [Logger.new($stdout)])
+DB = Sequel.connect(connection)
 class Author < Sequel::Model
   one_to_many :posts
 end
@@ -19,10 +20,11 @@ class Comment < Sequel::Model
 end
 
 get "/" do
-  content_type "application/json"
   author = Author.where(email: params[:email]).first
-  return Author.where(email: params[:email]).methods.to_json
-  posts = Post.eager(:comments).join(Author).where(Sequel.lit(Author.where(email: params[:email]).to_sql)).all
+  posts = Post.where(author_id: author.id).all
+  puts posts.size
+  comments = Comment.where(post_id: posts.map(&:id)).all
+  puts comments.size
   output = posts.map do |i|
     {
       id: i.id,
@@ -31,7 +33,7 @@ get "/" do
       created_at: i.created_at,
       updated_at: i.updated_at,
       author_id: i.author_id,
-      comments: i.comments.map do |c|
+      comments: comments.select { |c| c.post_id == i.id }.map do |c|
         {
           id: c.id,
           title: c.title,
@@ -42,5 +44,5 @@ get "/" do
       end
     }
   end
-  .to_json
+  json output
 end
